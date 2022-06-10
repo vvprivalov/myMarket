@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.geekbrains.myMarket.model.Product;
 import ru.geekbrains.myMarket.repository.ProductRepository;
 
-import javax.persistence.Entity;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,15 +31,15 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-    List<Product> findByMinPrice(int min) {
+    public List<Product> findByMinPrice(int min) {
         return productRepository.findProductByPriceAfter(min);
     }
 
-    List<Product> findByMaxPrice(int max) {
-        return productRepository.findProductByPriceAfter(max);
+    public List<Product> findByMaxPrice(int max) {
+        return productRepository.findProductByPriceBefore(max);
     }
 
-    List<Product> findBetweenMinMax(int min, int max) {
+    public List<Product> findBetweenMinMax(int min, int max) {
         return productRepository.findProductByPriceBetween(min, max);
     }
 }
