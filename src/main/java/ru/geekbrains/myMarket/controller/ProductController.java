@@ -2,9 +2,12 @@ package ru.geekbrains.myMarket.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.myMarket.model.Product;
 import ru.geekbrains.myMarket.service.ProductService;
+
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,8 +27,8 @@ public class ProductController {
 //        return productService.findById(id);
 //    }
 
-    @GetMapping("/products/{id}")
-    public void delProduct(@PathVariable(value = "id") Long id) {
+    @DeleteMapping(value = "/products/{id}")
+    public void delProduct(@PathVariable("id") Long id) {
 
         productService.delProduct(id);
     }

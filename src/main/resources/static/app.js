@@ -18,8 +18,8 @@ angular.module('market-front', []).controller('appController', function ($scope,
         });
     }
 
-    $scope.delProduct = function (product) {
-        $http.delete(contextPath + '/products/{product.id}')
+    $scope.delProduct = function (id) {
+        $http.delete(contextPath + '/products' + '/' + id)
             .then(function successCallback(response) {
                     $scope.loadProducts(currentPageIndex);
                 }, function failCallback(response) {
