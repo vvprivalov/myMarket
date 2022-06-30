@@ -47,12 +47,23 @@ angular.module('market-front').controller('storeController', function ($scope, $
         $scope.loadProducts(currentPageIndex);
     }
 
-    $scope.navToEditProductPage = function (productId){
-        $location.path('/edit_product/'+ productId);
+    $scope.navToEditProductPage = function (productId) {
+        $location.path('/edit_product/' + productId);
     }
 
-    $scope.navToEditProductPage = function (productId){
-        $location.path('/update_product/'+ productId);
+    $scope.navToEditProductPage = function (productId) {
+        $location.path('/update_product/' + productId);
+    }
+
+    $scope.addProductToCart = function (product) {
+
+        $http.post(contextPath + '/products/add-cart', product)
+            .then(function successCallback(response) {
+                alert("Продукт успешно добавлен в корзину");
+                }, function failCallback(response) {
+                    alert(response.data.messages);
+                }
+            );
     }
 
     $scope.loadProducts(1);

@@ -7,10 +7,10 @@ import java.util.List;
 
 @Component
 public class Cart {
-    private List<Product> lstCart;
+    private final List<Product> lstCart;
 
     public Cart() {
-     lstCart = new ArrayList<>();
+        this.lstCart = new ArrayList<>();
     }
 
     public List<Product> getLstCart() {

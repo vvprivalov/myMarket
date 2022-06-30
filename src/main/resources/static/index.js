@@ -36,6 +36,6 @@
 })();
 
 angular.module('market-front').controller('indexController', function ($rootScope, $scope, $http) {
-    const contextPath = 'http://localhost:8189/mymarket/';
+    const contextPath = 'http://localhost:8189/mymarket';
 
 });
