@@ -1,7 +1,7 @@
 BEGIN;
-DROP SCHEMA IF EXISTS myMarket CASCADE;
-CREATE SCHEMA IF NOT EXISTS myMarket;
-SET SEARCH_PATH = myMarket;
+DROP SCHEMA IF EXISTS mymarket CASCADE;
+CREATE SCHEMA IF NOT EXISTS mymarket;
+SET SEARCH_PATH = mymarket;
 CREATE TABLE products (id BIGSERIAL PRIMARY KEY, name VARCHAR(45), price INT);
 INSERT INTO products (name, price) VALUES ('Молоко', 2), ('Сметана', 5), ('Сыр', 36), ('Творог', 10),
                                           ('Сыворотка', 6), ('Хлеб', 3), ('Батон', 5), ('Кекс', 11),

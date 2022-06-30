@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=myMarket
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=mymarket
     username: postgres
     password: 12345
   jpa:

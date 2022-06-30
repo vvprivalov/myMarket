@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
@@ -21,6 +21,7 @@
             <td>ID</td>
             <td>Название</td>
             <td>Цена</td>
+            <td>Изменение продукта</td>
             <td>Удаление продукта</td>
         </tr>
         </thead>
@@ -30,7 +31,9 @@
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
             <td>
-                <button type="button" class="btn btn-primary" ng-click="delProduct(p.id)" >Удалить</button>
+                <button type="button" class="btn btn-primary" ng-click="prepareProductForUpdate(p.id)">Изменить</button>
+            </td><td>
+                <button type="button" class="btn btn-primary" ng-click="delProduct(p.id)">Удалить</button>
             </td>
         </tr>
         </tbody>
@@ -55,6 +58,42 @@
             </li>
         </ul>
     </nav>
+
+    <p></p>
+
+    <h3>Добавление нового продукта</h3>
+
+    <form novalidate ng-submit="createNewProduct()">
+        <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" placeholder="Название" ng-model="new_product.name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цена</label>
+            <input type="text" class="form-control" placeholder="Цена" ng-model="new_product.price">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+    <p></p>
+
+    <p></p>
+
+    <h3>Изменение выбранного продукта</h3>
+
+    <form novalidate ng-submit="updateProduct()">
+        <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" placeholder="Название" ng-model="update_product.name">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Цена</label>
+            <input type="text" class="form-control" placeholder="Цена" ng-model="update_product.price">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+    </form>
+    <p></p>
 </div>
 </body>
 </html>

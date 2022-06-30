@@ -2,6 +2,7 @@ package ru.geekbrains.myMarket.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.myMarket.model.Product;
@@ -22,15 +23,27 @@ public class ProductController {
         return productService.findAll(pageIndex - 1, 10);
     }
 
-//    @GetMapping("/product/{id}")
-//    public Product findById(@PathVariable Long id) {
-//        return productService.findById(id);
-//    }
+    @PostMapping("/products")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product save(@RequestBody Product product) {
+        productService.save(product);
+        return product;
+    }
 
-    @DeleteMapping(value = "/products/{id}")
+    @DeleteMapping("/products/{id}")
     public void delProduct(@PathVariable("id") Long id) {
 
         productService.delProduct(id);
+    }
+
+    @GetMapping("/products/{id}")
+    public Product prepareProduct(@PathVariable Long id) {
+        return productService.findById(id);
+    }
+
+    @PutMapping("/products")
+    public void updateProduct(@RequestBody Product product) {
+        productService.updateProduct(product);
     }
 }
 

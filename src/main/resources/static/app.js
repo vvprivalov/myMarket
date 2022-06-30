@@ -63,6 +63,39 @@ angular.module('market-front', []).controller('appController', function ($scope,
         $scope.loadProducts(currentPageIndex);
     }
 
+    $scope.createNewProduct = function () {
+        $http.post(contextPath + '/products', $scope.new_product)
+            .then(function successCallback(response) {
+                    $scope.loadProducts(currentPageIndex);
+                    $scope.new_product = null;
+                }, function failCallback(response) {
+                    alert(response.data.message);
+                }
+            );
+    }
+
+    $scope.prepareProductForUpdate = function (productId) {
+        $http.get(contextPath + '/products/' + productId)
+            .then(function successCallback(response) {
+                    $scope.update_product = response.data;
+                }, function failCallback(response) {
+                    alert(response.data.message);
+                }
+            );
+    }
+
+    $scope.updateProduct = function () {
+        $http.put(contextPath + '/products', $scope.update_product)
+            .then(function successCallback(response) {
+                    $scope.update_product = null;
+                    $scope.loadProducts(currentPageIndex);
+                    alert("Продукт успешно обновлен");
+                }, function failCallback(response) {
+                    alert(response.data.message);
+                }
+            );
+    }
+
     $scope.loadProducts(1);
 
 });
