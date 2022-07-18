@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.myMarket.model.Product;
 import ru.geekbrains.myMarket.repository.ProductRepository;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class ProductService {

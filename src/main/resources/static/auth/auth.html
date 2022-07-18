@@ -1,0 +1,17 @@
+<div>
+    <p></p>
+    <h3>Аутентификация</h3>
+
+    <form novalidate ng-submit="checkLoginAndPassword()">
+        <div class="mb-3">
+            <label  class="form-label">Логин</label>
+            <input type="text" class="form-control" placeholder="Введите логин" ng-model="auth.login">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Пароль</label>
+            <input type="password" class="form-control" placeholder="Введите пароль" ng-model="auth.password">
+        </div>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+</div>

@@ -15,3 +15,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL94Dialect
   flyway:
     baseline-on-migrate: true
+
+jwt:
+  secret: lkwdnflakdjfy7384qyt3uiorfjvepiraut348orpifwidskvhq348wori23484
+  lifetime: 3600000
