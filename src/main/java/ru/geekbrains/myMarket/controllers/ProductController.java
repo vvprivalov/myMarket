@@ -13,12 +13,15 @@ import ru.geekbrains.myMarket.auth.AuthRequest;
 import ru.geekbrains.myMarket.auth.AuthResponse;
 import ru.geekbrains.myMarket.model.Cart;
 import ru.geekbrains.myMarket.model.Product;
+import ru.geekbrains.myMarket.model.User;
 import ru.geekbrains.myMarket.service.ProductService;
 import ru.geekbrains.myMarket.service.UserService;
 import ru.geekbrains.myMarket.utils.JwtTokenUtil;
 import ru.geekbrains.myMarket.utils.MarketError;
+import ru.geekbrains.myMarket.utils.Message;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -63,8 +66,18 @@ public class ProductController {
 
     @PostMapping("/products/add-cart")
     public List<Product> addProductToCard(@RequestBody Product product) {
-
         return cartProduct.addProduct(product);
+    }
+
+    @PostMapping("/products/reg")
+    public ResponseEntity<?> addNewUser(@RequestBody User user1) {
+        Optional<User> username = userService.findByUsername(user1.getUsername());
+        if (username.isPresent()) {
+            return ResponseEntity.ok(new Message("Такой пользователь уже есть"));
+        }
+        userService.save(user1);
+        return ResponseEntity.ok(new Message("Новый пользователь успешно создан"));
+
     }
 
     @PutMapping("/products")

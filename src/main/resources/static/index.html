@@ -12,6 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
 
+    <!--    Модуль, чтобы можно было пользоваться $localStorage - локальное хранилище браузера-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+
 </head>
 <body ng-app="market-front">
 <div class="container" ng-controller="indexController">
@@ -23,16 +26,35 @@
                         <a class="nav-link active" aria-current="page" href="#!/">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!/auth">Аутентификация</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#!/store">Каталог продуктов</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!/create_product">Добавить товар</a>
+                        <a class="nav-link" href="#!/create_product" ng-show="isUserLoggedIn()">Добавить товар</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!/cart_product">Ваша корзина</a>
+                        <a class="nav-link" href="#!/cart_product" ng-show="isUserLoggedIn()">Ваша корзина</a>
+                    </li>
+                    <li class="nav-item" ng-show="!isUserLoggedIn()">
+                        <form class="align-middle" ng-submit="checkLoginAndPassword()">
+                            <div class="input-group input-group-sm" style="padding: 4px;">
+                                <input id="navLoginField" class="form-control" ng-model="user.username" type="text"
+                                       aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+
+                                <input id="navPasswordField" class="form-control" ng-model="user.password"
+                                       type="password"
+                                       aria-describedby="inputGroup-sizing-sm" style="margin-left: 10px;">
+
+                                <button id="navLoginSubmit" class="btn btn-outline-warning btn-sm"
+                                        style="margin-left: 10px;" type="submit">Войти
+                                </button>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="nav-item" ng-show="isUserLoggedIn()" style="padding: 4px;">
+                        <button class="btn btn-outline-secondary btn-sm" ng-click="tryToLogout()">Выйти</button>
+                    </li>
+                    <li class="nav-item" ng-show="!isUserLoggedIn()" style="padding: 4px;">
+                        <button ng-click="regForm()" class="btn btn-outline-secondary btn-sm">Регистрация</button>
                     </li>
                 </ul>
             </div>
@@ -47,7 +69,7 @@
     <script src="update_product/update_product.js"></script>
     <script src="create_product/create_product.js"></script>
     <script src="cart_product/cart_product.js"></script>
-    <script src="auth/auth.js"></script>
+    <script src="reg/reg.js"></script>
 
 </div>
 </body>
