@@ -1,0 +1,29 @@
+server:
+  port: 8189
+  servlet:
+    context-path: /mymarket
+utils:
+  cart:
+    prefix: MY_SPRING_WEB_
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+  flyway:
+    baseline-on-migrate: true
+
+jwt:
+  secret: lkwdnflakdjfy7384qyt3uiorfjvepiraut348orpifwidskvhq348wori23484
+  lifetime: 3600000
