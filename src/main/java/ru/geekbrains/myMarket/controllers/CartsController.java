@@ -19,7 +19,7 @@ public class CartsController {
     private final CartService cartService;
     private final ProductService productService;
 
-    @GetMapping("/uuid")
+    @GetMapping("/{uuid}")
     public Cart getCart(Principal principal, @PathVariable String uuid) {
         String username = null;
         if (principal != null) {

@@ -61,7 +61,7 @@ angular.module('market-front').controller('storeController', function ($scope, $
 
     $scope.addProductToCart = function (productId) {
 
-        $http.post(contextPath + '/cart' + $localStorage.springWebGuestCartId + '/add/' + productId)
+        $http.get(contextPath + '/cart/' + $localStorage.springWebGuestCartId + '/add/' + productId)
             .then(function successCallback(response) {
                 alert("Продукт успешно добавлен в корзину");
                 }, function failCallback(response) {

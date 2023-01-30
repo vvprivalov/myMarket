@@ -1,19 +1,19 @@
 <div>
-    <h2>Корзина</h2>
-    <table class="table">
-        <thead>
+    <p></p>
+    <h3>Корзина</h3>
+    <table class="table table-hover">
             <tr>
-                <td>ID</td>
                 <td>Название</td>
-                <td>Стоимость</td>
-                <td></td>
+                <td>Количество</td>
+                <td>Цена</td>
+                <td>Сумма</td>
             </tr>
-        </thead>
         <tbody>
-            <tr ng-repeat="p in contentCart">
-                <td>{{p.id}}</td>
-                <td>{{p.name}}</td>
-                <td>{{p.price}}</td>
+            <tr ng-repeat="item in cart.items">
+                <td>{{item.productTitle}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.sum}}</td>
             </tr>
         </tbody>
     </table>
