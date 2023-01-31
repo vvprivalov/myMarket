@@ -40,6 +40,9 @@ public class CartService {
     public void addToCart(String cartKey, Long productId) {
         Product product = productService.findById(productId).orElseThrow(() ->
                 new ResourceNotFoundException("Невозможно добавить продукт в корзину. Продукт не найден, id" + productId));
+        execute(cartKey, c -> {
+            c.add(product);
+        });
     }
 
     public void clearCart(String cartKey) { execute(cartKey, Cart::clear);
@@ -66,8 +69,5 @@ public class CartService {
         redisTemplate.opsForValue().set(cartKey, cart);
     }
 
-    public void updateCart(String cartKey, Cart cart) {
-
-        redisTemplate.opsForValue().set(cartKey, cart);
-    }
+    public void updateCart(String cartKey, Cart cart) { redisTemplate.opsForValue().set(cartKey, cart); }
 }
