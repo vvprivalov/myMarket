@@ -12,5 +12,12 @@ angular.module('market-front').controller('cartController', function ($scope, $h
             );
     }
 
+    $scope.clearCart = function () {
+        $http.get(contextPath + '/' + $localStorage.springWebGuestCartId + '/clear')
+            .then(function (response) {
+                $scope.loadCart();
+            })
+    }
+
     $scope.loadCart();
 });

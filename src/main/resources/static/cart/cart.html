@@ -15,6 +15,15 @@
                 <td>{{item.price}}</td>
                 <td>{{item.sum}}</td>
             </tr>
+            <tr>
+                <td></td>
+                <td>Итого</td>
+                <td></td>
+                <td>{{cart.sum}}</td>
+            </tr>
         </tbody>
     </table>
+    <p>
+        <button class="btn btn-secondary" ng-click="clearCart()">Очистить корзину</button>
+    </p>
 </div>
